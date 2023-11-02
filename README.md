@@ -46,8 +46,8 @@ These are the steps I use to compile and run the code, steps may differ dependin
 1. Create/Navigate to the build folder and run
 
   ```
-  cmake -G "MinGW Makefiles" ..
-  cmake --build .
+  cmake ..
+  make
   ```
 
 2. Run the tests with
