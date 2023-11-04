@@ -1,29 +1,12 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.16)
 
-project(C-CPP-DATA-STRUCTURES-AND-ALGORITHMS)
+project(CPP_DATA_STRUCTURES_AND_ALGORITHMS LANGUAGES CXX)
 
-include(FetchContent)
-FetchContent_Declare(
-  googletest
-  GIT_REPOSITORY https://github.com/google/googletest.git
-  GIT_TAG release-1.12.1
-)
-
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 enable_testing()
 
-add_executable(
-  Test
-  test/QueueTests.cc
-)
-
-target_link_libraries(
-  Test
-  GTest::gtest_main
-)
-
-include(GoogleTest)
-gtest_discover_tests(Test)
-
+add_subdirectory(src)
+add_subdirectory(test)
