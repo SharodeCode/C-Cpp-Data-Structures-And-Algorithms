@@ -1,25 +1,25 @@
-cmake_minimum_required(VERSION 3.10)
+include(FetchContent)
 
-set(THIS ${PROJECT_NAME}-test)
+option(BUILD_GMOCK OFF)
+option(INSTALL_GTEST OFF)
 
-set(SOURCE_FILES
-    ../DataStructures/source/Test.cpp
-    queue-test.cpp
+FetchContent_Declare(
+  googletest
+  GIT_REPOSITORY https://github.com/google/googletest.git
+  GIT_TAG        release-1.12.0
 )
 
-add_subdirectory(googletest)
+FetchContent_MakeAvailable(googletest)
+add_library(GTest::GTest INTERFACE IMPORTED)
+target_link_libraries(GTest::GTest INTERFACE gtest_main)
 
-include_directories(../DataStructures/include)
+add_executable(main main.cpp SimpleMMTests.cpp QueueTests.cpp)
 
-add_executable(${THIS} ${SOURCE_FILES})
+target_link_libraries(main
+ PRIVATE
+  GTest::GTest
+  SimpleMM)
 
-# Set a fake version to test
-target_compile_definitions(${THIS} PRIVATE
-    DATASTRUCTURESANDALGORITHMS_MAJOR_VERSION=1
-    DATASTRUCTURESANDALGORITHMS_MINOR_VERSION=2
-)
-
-target_link_libraries(${THIS} gtest_main)
-
-add_test(NAME ${THIS} COMMAND ${THIS})
-
+add_test(multiply_gtests multiply_test)
+add_test(SimpleMM_gtests SimpleMMTests)
+add_test(Queue_gtests QueueTests)

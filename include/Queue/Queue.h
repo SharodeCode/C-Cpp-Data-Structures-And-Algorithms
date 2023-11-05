@@ -6,7 +6,7 @@
 static int MAX = 10;
 
 template <class X>
-class queue
+class Queue
 {
     X *arr;
 
@@ -16,17 +16,18 @@ class queue
     
 
     public:
-        queue(int size = MAX);
+        Queue(int size = MAX);
         void enqueue(X newValue);
         X dequeue();
 
         int size();
         bool isEmpty();
-        ~queue();
+        ~Queue();
 };
 
+
 template <class X>
-queue<X>::queue(int size)
+Queue<X>::Queue(int size)
 {
     arr = new X[size];
     rear = -1;
@@ -34,7 +35,7 @@ queue<X>::queue(int size)
 }
 
 template <class X>
-void queue<X>::enqueue(X newValue)
+void Queue<X>::enqueue(X newValue)
 {
     // If the array is full, resize it
     if (count == MAX) {
@@ -60,7 +61,7 @@ void queue<X>::enqueue(X newValue)
 }
 
 template <class X>
-X queue<X>::dequeue()
+X Queue<X>::dequeue()
 {
     // If array is empty, return default constructor
     if(count == 0){
@@ -83,19 +84,19 @@ X queue<X>::dequeue()
 }
 
 template <class X>
-int queue<X>::size()
+int Queue<X>::size()
 {
     return count;
 }
 
 template <class X>
-bool queue<X>::isEmpty()
+bool Queue<X>::isEmpty()
 {
     return (size() == 0);
 }
 
 template <class X>
-queue<X>::~queue()
+Queue<X>::~Queue()
 {
     delete[] arr;
 }
