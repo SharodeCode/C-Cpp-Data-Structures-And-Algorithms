@@ -5,23 +5,59 @@
 
 static int MAX = 10;
 
+/**
+ * @brief A generic Queue data structure template.
+ * 
+ * @tparam X The type of elements stored in the queue.
+ */
 template <class X>
 class Queue
 {
-    X *arr;
-
-    int rear;
-    int count;
+    X *arr;     ///< Array to store elements in the queue.
+    int rear;   ///< Index of the last element in the queue.
+    int count;  ///< Number of elements in the queue.
 
     
 
     public:
+        /**
+         * @brief Constructor to create a queue with a specified size.
+         * 
+         * @param size The initial size of the queue.
+         */
         Queue(int size = MAX);
+
+        /**
+         * @brief Enqueues a new element to the end of the queue.
+         * 
+         * @param newValue The value to be added to the queue.
+         */
         void enqueue(X newValue);
+
+        /**
+         * @brief Dequeues and returns the front element of the queue.
+         * 
+         * @return The dequeued value.
+         */
         X dequeue();
 
+        /**
+         * @brief Gets the current size of the queue.
+         * 
+         * @return The number of elements in the queue.
+         */
         int size();
+
+        /**
+         * @brief Checks if the queue is empty.
+         * 
+         * @return True if the queue is empty, false otherwise.
+         */
         bool isEmpty();
+
+        /**
+         * @brief Destructor to clean up memory used by the queue.
+         */
         ~Queue();
 };
 

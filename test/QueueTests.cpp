@@ -6,28 +6,41 @@ class QueueTests : public testing::Test
 {
 
 protected:
-	Queue<int> *q1_;
-	int arr[100];
+	Queue<int> *q1_;	///< Pointer to a Queue<int> instance.
+	int arr[100];		///< Array for storing random values.
 
+    /**
+     * @brief Constructor for QueueTests.
+     */
 	QueueTests()
 	{
 		std::srand(std::time(nullptr));
 
+		// Initialize the array with random values
 		for (int i = 0; i < 100; i++)
 		{
 			arr[i] = (rand() % 10);
 		}
 	}
 
+    /**
+     * @brief Destructor for QueueTests.
+     */
 	virtual ~QueueTests()
 	{
 	}
 
+    /**
+     * @brief Set up the test fixture.
+     */
 	virtual void SetUp()
 	{
 		q1_ = new Queue<int>();
 	}
 
+    /**
+     * @brief Tear down the test fixture.
+     */
 	virtual void TearDown()
 	{
 		delete q1_;
