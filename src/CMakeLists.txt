@@ -1,1 +1,2 @@
 add_subdirectory(Algorithms/SimpleMM)
+add_subdirectory(DataStructures/Matrix)

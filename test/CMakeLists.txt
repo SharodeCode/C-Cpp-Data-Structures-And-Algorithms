@@ -18,6 +18,7 @@ add_executable(main main.cpp SimpleMMTests.cpp QueueTests.cpp)
 target_link_libraries(main
  PRIVATE
   GTest::GTest
+  Matrix
   SimpleMM)
 
 add_test(multiply_gtests multiply_test)
