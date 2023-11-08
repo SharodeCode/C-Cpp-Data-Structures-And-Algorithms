@@ -13,7 +13,7 @@ FetchContent_MakeAvailable(googletest)
 add_library(GTest::GTest INTERFACE IMPORTED)
 target_link_libraries(GTest::GTest INTERFACE gtest_main)
 
-add_executable(main main.cpp SimpleMMTests.cpp QueueTests.cpp)
+add_executable(main main.cpp SimpleMMTests.cpp QueueTests.cpp StackTests.cpp)
 
 target_link_libraries(main
  PRIVATE
